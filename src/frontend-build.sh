@@ -195,13 +195,7 @@ setup_docker_login() {
         return 1
     fi
 
-    if [[ -z "$RH_REGISTRY_USER" || -z "$RH_REGISTRY_TOKEN" ]]; then
-        echo "RH_REGISTRY_USER and RH_REGISTRY_TOKEN must be set"
-        return 1
-    fi
-
     docker login -u="$QUAY_USER" --password-stdin quay.io <<< "$QUAY_TOKEN"
-    docker login -u="$RH_REGISTRY_USER" --password-stdin registry.redhat.io <<< "$RH_REGISTRY_TOKEN"
 
 }
 
